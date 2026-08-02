@@ -3,8 +3,8 @@ package http
 import (
 	"net/http"
 
-	"agnos/internal/model"
-	"agnos/internal/service"
+	"hospital-middleware/internal/model"
+	"hospital-middleware/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

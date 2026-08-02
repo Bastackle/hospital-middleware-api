@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"agnos/internal/model"
+	"hospital-middleware/internal/model"
 
 	"gorm.io/gorm"
 )

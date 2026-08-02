@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"agnos/internal/model"
+	"hospital-middleware/internal/model"
 )
 
 type HospitalAClient struct {

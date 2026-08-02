@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"agnos/internal/model"
-	"agnos/internal/service"
+	"hospital-middleware/internal/model"
+	"hospital-middleware/internal/service"
 
 	"github.com/stretchr/testify/assert"
 )

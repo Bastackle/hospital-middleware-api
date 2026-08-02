@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"agnos/internal/model"
+	"hospital-middleware/internal/model"
 
 	"gorm.io/gorm"
 )

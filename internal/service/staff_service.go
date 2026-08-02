@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"agnos/internal/model"
-	"agnos/pkg/auth"
+	"hospital-middleware/internal/model"
+	"hospital-middleware/pkg/auth"
 
 	"gorm.io/gorm"
 )

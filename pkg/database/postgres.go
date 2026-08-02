@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"agnos/internal/model"
+	"hospital-middleware/internal/model"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

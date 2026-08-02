@@ -11,11 +11,11 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	_ "agnos/docs"
-	"agnos/pkg/database"
+	_ "hospital-middleware/docs"
+	"hospital-middleware/pkg/database"
 
-	"agnos/internal/service"
-	httpHandler "agnos/internal/delivery/http"
+	"hospital-middleware/internal/service"
+	httpHandler "hospital-middleware/internal/delivery/http"
 )
 
 const (

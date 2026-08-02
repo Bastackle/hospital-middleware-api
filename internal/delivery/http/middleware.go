@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"agnos/pkg/auth"
+	"hospital-middleware/pkg/auth"
 
 	"github.com/gin-gonic/gin"
 )
