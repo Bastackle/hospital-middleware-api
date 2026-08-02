@@ -130,7 +130,6 @@ docker-compose up --build -d
 
 | Service | URL |
 |---------|-----|
-| API | http://localhost/ |
 | Swagger UI | http://localhost/swagger/index.html |
 
 Stop the application:
