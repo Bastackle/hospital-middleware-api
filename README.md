@@ -163,7 +163,6 @@ go run cmd/main.go
 
 | Service | URL |
 |---------|-----|
-| API | http://localhost:8080/ |
 | Swagger UI | http://localhost:8080/swagger/index.html |
 
 ---
