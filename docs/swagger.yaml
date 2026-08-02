@@ -1,0 +1,217 @@
+basePath: /
+definitions:
+  model.CreateStaffRequest:
+    properties:
+      hospital:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - hospital
+    - password
+    - username
+    type: object
+  model.HospitalAPatientResponse:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name_en:
+        type: string
+      first_name_th:
+        type: string
+      gender:
+        type: string
+      last_name_en:
+        type: string
+      last_name_th:
+        type: string
+      middle_name_en:
+        type: string
+      middle_name_th:
+        type: string
+      national_id:
+        type: string
+      passport_id:
+        type: string
+      patient_hn:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  model.LoginRequest:
+    properties:
+      hospital:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - hospital
+    - password
+    - username
+    type: object
+  model.PatientSearchRequest:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      national_id:
+        type: string
+      passport_id:
+        type: string
+      phone_number:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Middleware system for searching patients across hospitals.
+  title: Hospital Middleware API
+  version: "1.0"
+paths:
+  /patient/search:
+    post:
+      consumes:
+      - application/json
+      description: Search patients belonging to the same hospital as the logged-in
+        staff
+      parameters:
+      - description: Search Criteria
+        in: body
+        name: request
+        schema:
+          $ref: '#/definitions/model.PatientSearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Search patients
+      tags:
+      - patient
+  /patient/search/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Mock External HIS API for Hospital A using national_id or passport_id
+      parameters:
+      - description: National ID or Passport ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.HospitalAPatientResponse'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Search patient from Hospital A HIS (Mock API)
+      tags:
+      - external-his
+  /ping:
+    get:
+      description: Check API status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Health check
+      tags:
+      - system
+  /staff/create:
+    post:
+      consumes:
+      - application/json
+      description: Create staff with username, password, and hospital code
+      parameters:
+      - description: Staff Details
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateStaffRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a new hospital staff member
+      tags:
+      - staff
+  /staff/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate staff and return JWT token
+      parameters:
+      - description: Login Credentials
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Staff Login
+      tags:
+      - staff
+securityDefinitions:
+  BearerAuth:
+    description: Type "Bearer " followed by a space and your JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
